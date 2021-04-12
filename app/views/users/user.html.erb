@@ -1,0 +1,22 @@
+<div class="container">
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Email</th>
+			<th>Date Time</th>
+			<th>User</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @share_locations.each do |share_location| %>
+		<tr>
+			<td><%= share_location.id %></td>
+			<td><%= share_location.location_url %></td>
+			<td><%= share_location.created_at %></td>
+			<td><%= share_location.user_id%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>

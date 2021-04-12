@@ -1,0 +1,5 @@
+$("#shared_location").html("<%= escape_javascript(render(:partial => 'user_name_list')) %>");
+$('#shared_location').modal({
+    backdrop: 'static',
+    keyboard: false
+});

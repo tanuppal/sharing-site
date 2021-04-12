@@ -1,0 +1,5 @@
+$("#shared_location").html("<%= escape_javascript(render(:partial => 'add_share_locations')) %>");
+$('#shared_location').modal({
+    backdrop: 'static',
+    keyboard: false
+});

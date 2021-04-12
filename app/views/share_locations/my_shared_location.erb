@@ -1,0 +1,34 @@
+<div class="container">
+	<div style="float: left;">
+		<h3>My Shared Location</h3>
+	</div>
+	<div style="float: right;">
+		<a class="btn btn-info" onclick="addLocation()" >Share location</a>
+	</div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>URL</th>
+				<th>Date Time</th>
+				<th>User Count</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%if @loc_arr.present?%>
+				<% @loc_arr.each do |loc| %>
+					<tr>
+						<td><%= loc['id'] %></td>
+						<td><%= link_to loc['location_url'], loc['location_url'] , target: "_blank"%></td>
+						<td><%= loc['created_at'].strftime('%d-%m-%Y %T') %></td>
+						<td><a class="btn btn-info" onclick="userlist(<%=loc['id']%>)" ><%= loc['user_count']%></a></td>
+					</tr>
+				<% end %>
+			<%else%>
+				<tr>
+					<td>NO Records</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>

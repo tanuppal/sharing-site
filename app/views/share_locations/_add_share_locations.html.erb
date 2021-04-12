@@ -1,0 +1,49 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Share Location</h4>
+    </div>
+    <div class="modal-body">
+      <%= form_tag create_share_locations_path, html: {class: "form-horizontal"} do %>
+        <%= hidden_field_tag :user_id, current_user.id, class: "form-control"%>
+        <%= hidden_field_tag :lat, '', class: "form-control"%>
+        <%= hidden_field_tag :lng, '', class: "form-control"%>
+        <%= hidden_field_tag :location_url, '', class: "form-control"%>
+        <div class="form-group">
+          <label for="email">Lat long:</label>
+          <span id="lat_div">???</span>°, 
+          <span id="lng_div">???</span>°
+        </div>
+        <div class="form-group">
+          <label for="pwd">Users:</label>
+        </div>
+        <div class="checkbox">
+          <% @users.each do |user| %>
+            <label><%= check_box_tag "share_user_id[]", user.id %> <%=user.name%></label>
+          <%end%>
+        </div>
+        <div class="modal-footer" style="padding-top: 20px;">
+          <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+          <%= submit_tag 'Share', class: 'btn btn-primary btn-sm'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script>
+  var startPos;
+  navigator.geolocation.getCurrentPosition(function(position) {
+    startPos = position;
+    var lat = startPos.coords.latitude
+    var lng = startPos.coords.longitude
+    document.getElementById('lat_div').innerHTML = lat;
+    document.getElementById('lng_div').innerHTML = lng; 
+    document.getElementById('lat').value = lat;
+    document.getElementById('lng').value = lng;
+    var loc_url = 'https://www.google.com/maps/?q='+ lat +','+lng;
+    document.getElementById('location_url').value = loc_url;
+    }, 
+    function  (error) {
+  });
+</script>

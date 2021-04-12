@@ -1,0 +1,47 @@
+<div class="container">
+	<div class="form-group">
+	 Share this location.
+	  <p>
+	    Your Location (lat, lon):<br/>
+	    <span id="lat_div">???</span>°, 
+	    <span id="lng_div">???</span>°
+	  </p>
+	</div>
+  <%= form_tag share_locations_path, html: {class: "form-horizontal"} do %>
+		<%= hidden_field_tag :user_id, current_user.id, class: "form-control"%>
+		<%= hidden_field_tag :lat, '', class: "form-control"%>
+		<%= hidden_field_tag :lng, '', class: "form-control"%>
+		<%= hidden_field_tag :location_url, '', class: "form-control"%>
+		<div class="form-group">
+      <label for="inputEmail3" class="col-sm-1 control-label">User:</label>
+      <div class="col-sm-5">
+       <%= select_tag :user, options_for_select(@users), multiple: true,  class: "form-control"%>
+  		</div>
+		</div>
+		<div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">&nbsp</label>
+        <div class="col-sm-5">
+      		<%= submit_tag "Share",data: { confirm: 'Are you want to share this location?' }, :class => "btn btn-info form-control"%>
+        </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+// window.onload = function() {
+  var startPos;
+  navigator.geolocation.getCurrentPosition(function(position) {
+		startPos = position;
+		var lat = startPos.coords.latitude
+		var lng = startPos.coords.longitude
+    document.getElementById('lat_div').innerHTML = lat;
+    document.getElementById('lng_div').innerHTML = lng; 
+    document.getElementById('lat').value = lat;
+    document.getElementById('lng').value = lng;
+    var loc_url = 'https://www.google.com/maps/?q='+ lat +','+lng;
+    document.getElementById('location_url').value = loc_url;
+  	}, 
+    function	(error) {
+  });
+// };
+</script>

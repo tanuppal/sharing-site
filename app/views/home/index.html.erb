@@ -1,0 +1,32 @@
+<div class="container">
+	<div style="float: left;">
+		<h3>User list</h3>
+	</div>
+	<div style="float: right;">
+		<a class="btn btn-info" onclick="addLocation()" >Share location</a>
+	</div>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Mobile</th>
+				<th>Email</th>
+				<th>Date Time</th>
+		</thead>
+		<tbody>
+			<% @users.each do |user| %>
+			<tr>
+				<td><%= user.id %></td>
+				<td><%= user.name %></td>
+				<td><%= user.mobile_no %></td>
+				<td><%= user.email %></td>
+				<td><%= user.created_at.strftime('%d-%m-%Y %T') %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+
+
