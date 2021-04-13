@@ -26,7 +26,7 @@
         <ul class="nav navbar-nav">
           <li <%if request[:action] == 'index'%> class="active" <%end%>><%= link_to 'Home', home_path %></li>
           <li <%if request[:action] == 'my_shared_location'%> class="active" <%end%>><%= link_to 'My Shared Location', my_shared_location_path %></li>
-          <li <%if request[:action] == 'other_shared_location'%> class="active" <%end%>><%= link_to 'Other Shared Location', other_shared_location_path %></li>
+          <li <%if request[:action] == 'other_shared_location'%> class="active" <%end%>><%= link_to 'Other Shared Location Site', other_shared_location_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
