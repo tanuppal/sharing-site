@@ -1,24 +1,19 @@
 # README
+Project Setup:
+This project makes up the backend of LEEP. It is an API-only Rails app.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version - 2.7.2
 
-Things you may want to cover:
+Rails version - 6.1.3
 
-* Ruby version
+Install all dependencies - bundle install
 
-* System dependencies
+Create the database config - cp config/database.yml.example config/database.yml. Add your database username and password. Do not delete/rename the example yml file.
 
-* Configuration
+Database creation - bin/rails db:create
 
-* Database creation
+Database initialization - bin/rails db:seed
 
-* Database initialization
+Database migration: - bin/rails db:migrate
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+How to run the test suite - bin/rspec .spec/models/user_spec.rb
