@@ -1,6 +1,5 @@
 # README
 Project Setup:
-This project makes up the backend of LEEP. It is an API-only Rails app.
 
 Ruby version - 2.7.2
 
